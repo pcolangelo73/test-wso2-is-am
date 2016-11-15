@@ -15,9 +15,9 @@ const config = {
   filterProtocolClaims: true,
   loadUserInfo: true,
   metadata: {
-    // authorization_endpoint: 'https://localhost:9443/oauth2/authorize',
-    authorization_endpoint: 'https://localhost:8244/authorize',
-    // end_session_endpoint: 'https://localhost:8244/logout',
+    authorization_endpoint: 'https://localhost:9443/oauth2/authorize', //IS
+    // authorization_endpoint: 'https://localhost:8244/authorize', //API Manager (just redirects to IS)
+    end_session_endpoint: 'https://localhost:9443/oidc/logout',
     // userinfo_endpoint: 'https://localhost:9443/oauth2/userinfo?schema=openid'
   }
 }

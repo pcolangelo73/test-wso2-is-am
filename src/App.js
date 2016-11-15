@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import userManager from './user-manager';
+import { makeApiCall } from './api-util';
 
 class App extends Component {
   constructor(props) {
@@ -54,14 +55,51 @@ class App extends Component {
           <h2>WSO2 SSO Test</h2>
         </div>
         <div>
+          <p>
+            <strong>Session Info:</strong>
+          </p>
           {content}
         </div>
         <div>
           <button onClick={onLogout}>Log out</button>
         </div>
+        <div>
+          <p>Test APIs:</p>
+          <div>
+            <button onClick={this.getDcdReports.bind(this)}>Test DCD List Reports</button>
+            <button onClick={this.getCppReports.bind(this)}>Test CPP List Reports</button>
+          </div>
+          <div>
+            <p>
+              {this.state.output}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
+
+  getDcdReports() {
+    this.callApi('https://192.168.1.9:8244/dcd/1.0.0/dcd-listing');
+  }
+
+  getCppReports() {
+    this.callApi('https://192.168.1.9:8244/cpp/1.0.0/cpp-listing');
+  }
+
+  callApi(url) {
+    makeApiCall(url)
+      .then(json => {
+        this.setState({
+          output: JSON.stringify(json)
+        })
+      }).catch(err => {
+        this.setState({
+          output: err.toString()
+        })
+      });
+  }
+
 }
 
 function onLogout(e) {
