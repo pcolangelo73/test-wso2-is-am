@@ -9,7 +9,8 @@ import App from './App';
 import './index.css';
 import Oidc from 'oidc-client';
 
-Oidc.Log.logger = console;
+// Uncomment to enable oidc-client logging to console
+// Oidc.Log.logger = console;
 
 ReactDOM.render((
   <Router history={browserHistory}>

@@ -7,7 +7,7 @@ const config = {
   client_id: 'yAKpff_1fDYFQGNzu0pBGaNgm_sa',
   redirect_uri: `${BASE_URL}/callback`,
   response_type: 'token',
-  scope: 'default',                               // TODO: Correct scope?
+  scope: 'default',
   //authority: 'https://localhost:9443/oauth2/authorize',
   authority: 'https://localhost:8244',
   post_logout_redirect_uri: `${BASE_URL}/login`,
