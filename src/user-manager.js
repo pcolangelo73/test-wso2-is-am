@@ -7,9 +7,8 @@ const config = {
   client_id: 'yAKpff_1fDYFQGNzu0pBGaNgm_sa',
   redirect_uri: `${BASE_URL}/callback`,
   response_type: 'token',
-  scope: 'default',
-  //authority: 'https://localhost:9443/oauth2/authorize',
-  authority: 'https://localhost:8244',
+  scope: 'view_dcd view_cpp',
+  authority: 'https://localhost:9443',
   post_logout_redirect_uri: `${BASE_URL}/login`,
   // automaticSilentRenew: false,
   filterProtocolClaims: true,
@@ -18,7 +17,7 @@ const config = {
     authorization_endpoint: 'https://localhost:9443/oauth2/authorize', //IS
     // authorization_endpoint: 'https://localhost:8244/authorize', //API Manager (just redirects to IS)
     end_session_endpoint: 'https://localhost:9443/oidc/logout',
-    // userinfo_endpoint: 'https://localhost:9443/oauth2/userinfo?schema=openid'
+    userinfo_endpoint: 'https://localhost:9443/oauth2/userinfo?schema=openid'
   }
 }
 

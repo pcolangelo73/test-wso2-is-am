@@ -80,11 +80,11 @@ class App extends Component {
   }
 
   getDcdReports() {
-    this.callApi('https://192.168.1.9:8244/dcd/1.0.0/dcd-listing');
+    this.callApi('https://localhost:8244/dcd/1.0.0/dcd-listing');
   }
 
   getCppReports() {
-    this.callApi('https://192.168.1.9:8244/cpp/1.0.0/cpp-listing');
+    this.callApi('https://localhost:8244/cpp/1.0.0/cpp-listing');
   }
 
   callApi(url) {
@@ -104,6 +104,10 @@ class App extends Component {
 
 function onLogout(e) {
   e.preventDefault;
+
+  //https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc2&commonAuthCallerPath=http://localhost:3001&relyingParty=yAKpff_1fDYFQGNzu0pBGaNgm_sa
+  //window.location.assign('https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc&commonAuthCallerPath=http://localhost:3001/&relyingParty=WSO2.ORG_admin_test-app_PRODUCTION');
+  //https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc&commonAuthCallerPath=http://localhost:3001/&relyingParty=WSO2.ORG_admin_test-app_PRODUCTION
   userManager.signoutRedirect();
 }
 
