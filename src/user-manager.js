@@ -16,8 +16,8 @@ const config = {
   loadUserInfo: true,
   metadata: {
     // authorization_endpoint: 'https://localhost:9443/oauth2/authorize',
-    authorization_endpoint: 'https://localhost:8244/authorize'
-    // end_session_endpoint: 'https://localhost:9443/oidc/logout',
+    authorization_endpoint: 'https://localhost:8244/authorize',
+    // end_session_endpoint: 'https://localhost:8244/logout',
     // userinfo_endpoint: 'https://localhost:9443/oauth2/userinfo?schema=openid'
   }
 }
