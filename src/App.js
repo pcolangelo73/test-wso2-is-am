@@ -31,11 +31,24 @@ class App extends Component {
 
     let content;
     if(user) {
-      const list = Object.keys(user).map((okey, i) => (
-        <li key={i}>{okey}: {user[okey]}</li>
-      ));
+      const list = Object.keys(user).map((okey, i) => {
+        
+        if(typeof user[okey] === 'object') {
+          const subList = Object.keys(user[okey]).map((innerKey, j) => (
+            <li key={-j}> {innerKey}: {user[okey][innerKey]} </li>
+          ));
+          return( 
+            <li key={Math.random() * 1000}>
+              {okey}: 
+              <ul key={Math.random() * 1000}>{subList}</ul> 
+            </li>
+          );
+        }
+        return <li key={i}>{okey}: {user[okey]}</li>;
+      });
+
       list.push(
-        <li key={-1}>
+        <li key={-9999999}>
           Expires At: {new Date(user.expires_at * 1000).toString()}
         </li>
       );
@@ -104,10 +117,6 @@ class App extends Component {
 
 function onLogout(e) {
   e.preventDefault;
-
-  //https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc2&commonAuthCallerPath=http://localhost:3001&relyingParty=yAKpff_1fDYFQGNzu0pBGaNgm_sa
-  //window.location.assign('https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc&commonAuthCallerPath=http://localhost:3001/&relyingParty=WSO2.ORG_admin_test-app_PRODUCTION');
-  //https://localhost:9443/commonauth?commonAuthLogout=true&type=oidc&commonAuthCallerPath=http://localhost:3001/&relyingParty=WSO2.ORG_admin_test-app_PRODUCTION
   userManager.signoutRedirect();
 }
 

@@ -7,7 +7,8 @@ import LoginPage from './login-page';
 import CallbackPage from './callback-page.jsx';
 import App from './App';
 import './index.css';
-import Oidc from 'oidc-client';
+import Oidc from 'oidc-client/lib/oidc-client';
+// import Oidc from './modified-libs/oicd-client-modified';
 
 // Uncomment to enable oidc-client logging to console
 // Oidc.Log.logger = console;
