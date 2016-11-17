@@ -18,5 +18,6 @@ ReactDOM.render((
     <Route path="/" component={App} />
     <Route path="/login" component={LoginPage} />
     <Route path="/callback" component={CallbackPage} />
+    <Route path="/callbacksilent" component={CallbackPage} />
   </Router>
 ), document.getElementById('root'));

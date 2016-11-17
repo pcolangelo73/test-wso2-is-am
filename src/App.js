@@ -72,6 +72,9 @@ class App extends Component {
             <strong>Session Info:</strong>
           </p>
           {content}
+          <p>
+            Time: {new Date().toString()}
+          </p>
         </div>
         <div>
           <button onClick={onLogout}>Log out</button>
