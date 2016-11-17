@@ -2,8 +2,8 @@
  * TODO: Move the modified node module into src (untill we find out if wso2 IS supports jwks_uri)
  */
 
-import { UserManager } from 'oidc-client/lib/oidc-client';
-// import {UserManager} from './modified-libs/oidc-client-modified';
+// import { UserManager } from 'oidc-client/lib/oidc-client';
+import {UserManager} from '../modified-libs/oidc-client/lib/oidc-client';
 
 const BASE_URL = 'http://localhost:3001';
 
