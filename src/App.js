@@ -13,9 +13,9 @@ class App extends Component {
   }
 
   componentWillMount() {
+    // Hacky way to show the current token info and poll for update after silent refresh
     userManager.getUser()
       .then(user => {
-        console.log('getUser(): ', user);
         if(user) {
           this.setState({
             user: user
@@ -24,6 +24,18 @@ class App extends Component {
           this.props.router.push('/login');
         }
       });
+    setInterval(() => {
+      userManager.getUser()
+        .then(user => {
+          if(user) {
+            this.setState({
+              user: user
+            });
+          } else {
+            this.props.router.push('/login');
+          }
+        });
+    }, 2000);
   }
 
   render() {
