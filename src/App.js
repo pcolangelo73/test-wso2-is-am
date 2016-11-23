@@ -13,7 +13,8 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // Hacky way to show the current token info and poll for update after silent refresh
+    // Quick and Dirty way to show the current token info and poll for update every 2000ms to show the new token info after silent refresh. 
+    // Not bothering keeping it DRY
     userManager.getUser()
       .then(user => {
         if(user) {
@@ -41,10 +42,10 @@ class App extends Component {
   render() {
     const user = this.state.user;
 
+    // Iterate through the keys in the user object and display them on the screen in a list
     let content;
     if(user) {
       const list = Object.keys(user).map((okey, i) => {
-        
         if(typeof user[okey] === 'object') {
           const subList = Object.keys(user[okey]).map((innerKey, j) => (
             <li key={-j}> {innerKey}: {user[okey][innerKey]} </li>
@@ -58,7 +59,6 @@ class App extends Component {
         }
         return <li key={i}>{okey}: {user[okey]}</li>;
       });
-
       list.push(
         <li key={-9999999}>
           Expires At: {new Date(user.expires_at * 1000).toString()}
@@ -130,6 +130,7 @@ class App extends Component {
 
 }
 
+// Single Sign out
 function onLogout(e) {
   e.preventDefault;
   userManager.signoutRedirect();

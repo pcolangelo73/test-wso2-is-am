@@ -1,9 +1,12 @@
 import userManager from './user-manager';
 
+/**
+ * Simple function to make api calls with the logged in user's access token
+ */
 export function makeApiCall(url, method = 'GET') {
 
   return userManager.getUser()
-    .then(user => {
+    .then(user => {      
       const accessToken = user.access_token;
       
       const headers = new Headers({
